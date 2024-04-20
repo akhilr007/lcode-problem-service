@@ -1,5 +1,4 @@
 function pingCheckController(req, res) {
-  console.log("ping check");
   return res.json({ message: "Problem controller is set up" });
 }
 
