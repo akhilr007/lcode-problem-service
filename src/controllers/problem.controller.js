@@ -1,4 +1,3 @@
-const { StatusCodes } = require("http-status-codes");
 const NotImplementedError = require("../errors/notImplemented.error");
 
 function pingCheckController(req, res) {
