@@ -6,15 +6,11 @@ function pingCheckController(req, res) {
 }
 
 function getProblem(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+  throw new NotImplementedError("getProblem");
 }
 
 function getProblems(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+  throw new NotImplementedError("getProblems");
 }
 
 function addProblem(req, res) {
@@ -22,15 +18,11 @@ function addProblem(req, res) {
 }
 
 function deleteProblem(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+  throw new NotImplementedError("deleteProblem");
 }
 
 function updateProblem(req, res) {
-  return res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: "Not Implemented" });
+  throw new NotImplementedError("updateProblem");
 }
 
 module.exports = {
