@@ -5,23 +5,43 @@ function pingCheckController(req, res) {
 }
 
 function getProblem(req, res) {
-  throw new NotImplementedError("getProblem");
+  try {
+    throw new NotImplementedError("getProblem");
+  } catch (error) {
+    next(error);
+  }
 }
 
 function getProblems(req, res) {
-  throw new NotImplementedError("getProblems");
+  try {
+    throw new NotImplementedError("getProblems");
+  } catch (error) {
+    next(error);
+  }
 }
 
 function addProblem(req, res) {
-  throw new NotImplementedError("addProblem");
+  try {
+    throw new NotImplementedError("addProblem");
+  } catch (error) {
+    next(error);
+  }
 }
 
 function deleteProblem(req, res) {
-  throw new NotImplementedError("deleteProblem");
+  try {
+    throw new NotImplementedError("deleteProblem");
+  } catch (error) {
+    next(error);
+  }
 }
 
 function updateProblem(req, res) {
-  throw new NotImplementedError("updateProblem");
+  try {
+    throw new NotImplementedError("updateProblem");
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = {
