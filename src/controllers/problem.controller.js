@@ -4,7 +4,7 @@ function pingCheckController(req, res) {
   return res.json({ message: "Problem controller is set up" });
 }
 
-function getProblem(req, res) {
+function getProblem(req, res, next) {
   try {
     throw new NotImplementedError("getProblem");
   } catch (error) {
@@ -12,7 +12,7 @@ function getProblem(req, res) {
   }
 }
 
-function getProblems(req, res) {
+function getProblems(req, res, next) {
   try {
     throw new NotImplementedError("getProblems");
   } catch (error) {
@@ -20,7 +20,7 @@ function getProblems(req, res) {
   }
 }
 
-function addProblem(req, res) {
+function addProblem(req, res, next) {
   try {
     throw new NotImplementedError("addProblem");
   } catch (error) {
@@ -28,7 +28,7 @@ function addProblem(req, res) {
   }
 }
 
-function deleteProblem(req, res) {
+function deleteProblem(req, res, next) {
   try {
     throw new NotImplementedError("deleteProblem");
   } catch (error) {
@@ -36,7 +36,7 @@ function deleteProblem(req, res) {
   }
 }
 
-function updateProblem(req, res) {
+function updateProblem(req, res, next) {
   try {
     throw new NotImplementedError("updateProblem");
   } catch (error) {
