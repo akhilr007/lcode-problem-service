@@ -11,7 +11,6 @@ class ProblemRepository {
       });
       return problem;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -21,7 +20,6 @@ class ProblemRepository {
       const problems = await Problem.find({});
       return problems;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -34,7 +32,18 @@ class ProblemRepository {
       }
       return problem;
     } catch (error) {
-      console.log(error);
+      throw error;
+    }
+  }
+
+  async deleteProblem(problemId) {
+    try {
+      const deletedProblem = await Problem.findByIdAndDelete(problemId);
+      if (!deletedProblem) {
+        throw new NotFoundError("problem", problemId);
+      }
+      return deletedProblem;
+    } catch (error) {
       throw error;
     }
   }
