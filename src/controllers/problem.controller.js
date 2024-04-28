@@ -9,9 +9,15 @@ function pingCheckController(req, res) {
   return res.json({ message: "Problem controller is set up" });
 }
 
-function getProblem(req, res, next) {
+async function getProblem(req, res, next) {
   try {
-    throw new NotImplementedError("getProblem");
+    const response = await problemService.getProblem(req.params.id);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully retrieved problem",
+      data: response,
+      error: {},
+    });
   } catch (error) {
     next(error);
   }
