@@ -1,5 +1,15 @@
 const winston = require("winston");
-const { LOG_LEVEL } = require("./server.config");
+require("winston-mongodb");
+
+const { LOG_LEVEL, LOG_DB_URL } = require("./server.config");
+
+let options = {
+  db: LOG_DB_URL,
+  options: { useUnifiedTopology: true },
+  collection: "logs",
+  level: "error",
+  metaKey: "additionalInfo",
+};
 
 const allowedTransports = [];
 
@@ -17,11 +27,13 @@ allowedTransports.push(
   })
 );
 
+allowedTransports.push(new winston.transports.MongoDB(options));
+
 const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
     winston.format.printf(
-      (log) => `${log.timestamp} [${log.level.toUpperCase()}]: ${log.message}`
+      (log) => `${log.timestamp} [${log.level}]: ${log.message}`
     )
   ),
   transports: allowedTransports,
