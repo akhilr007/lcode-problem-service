@@ -33,7 +33,6 @@ class ProblemRepository {
     try {
       const problem = await Problem.findById(problemId);
       if (!problem) {
-        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
       logger.info(`Retrieved problem with ID: ${problemId}`);
@@ -50,7 +49,6 @@ class ProblemRepository {
     try {
       const deletedProblem = await Problem.findByIdAndDelete(problemId);
       if (!deletedProblem) {
-        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
       logger.info(`Deleted problem with ID: ${problemId}`);
@@ -69,7 +67,6 @@ class ProblemRepository {
         new: true,
       });
       if (!updatedProblem) {
-        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
       logger.info(`Updated problem with ID: ${problemId}`);

@@ -13,6 +13,7 @@ let options = {
 
 const allowedTransports = [];
 
+// console logging
 allowedTransports.push(
   new winston.transports.Console({
     level: LOG_LEVEL,
@@ -27,7 +28,22 @@ allowedTransports.push(
   })
 );
 
+// mongodb logging
 allowedTransports.push(new winston.transports.MongoDB(options));
+
+// file based logging
+allowedTransports.push(
+  new winston.transports.File({
+    level: "error",
+    filename: `app.log`,
+    format: winston.format.combine(
+      winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+      winston.format.printf(
+        (log) => `${log.timestamp} [${log.level.toUpperCase()}]: ${log.message}`
+      )
+    ),
+  })
+);
 
 const logger = winston.createLogger({
   format: winston.format.combine(
