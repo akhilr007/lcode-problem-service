@@ -10,11 +10,13 @@ class ProblemRepository {
         description: problemData.description,
         testCases: problemData.testCases ? problemData.testCases : [],
       });
-      logger.info(`Problem created successfully: ${problem._id}`);
+      logger.info(
+        `ProblemRepository.createProblem : Problem created successfully: ${problem._id}`
+      );
       return problem;
     } catch (error) {
       logger.error(
-        `Problem.Repository : Error while creating problem: ${error.message}`
+        `ProblemRepository.createProblem : Error while creating problem: ${error.message}`
       );
       throw error;
     }
@@ -23,11 +25,13 @@ class ProblemRepository {
   async getAllProblems() {
     try {
       const problems = await Problem.find({});
-      logger.info(`Retrieved all problems: ${problems.length} found`);
+      logger.info(
+        `ProblemRepository.getAllProblems : Retrieved all problems: ${problems.length} found`
+      );
       return problems;
     } catch (error) {
       logger.error(
-        `Problem.Repository : Error while retrieving all problems: ${error.message}`
+        `ProblemRepository.getAllProblems : Error while retrieving all problems: ${error.message}`
       );
       throw error;
     }
@@ -39,11 +43,13 @@ class ProblemRepository {
       if (!problem) {
         throw new NotFoundError("problem", problemId);
       }
-      logger.info(`Retrieved problem with ID: ${problemId}`);
+      logger.info(
+        `ProblemRepository.getProblem : Retrieved problem with ID: ${problemId}`
+      );
       return problem;
     } catch (error) {
       logger.error(
-        `Problem.Repository : Error while retrieving problem with ID ${problemId}: ${error.message}`
+        `ProblemRepository.getProblem : Error while retrieving problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
@@ -55,11 +61,13 @@ class ProblemRepository {
       if (!deletedProblem) {
         throw new NotFoundError("problem", problemId);
       }
-      logger.info(`Deleted problem with ID: ${problemId}`);
+      logger.info(
+        `ProblemRepository.deleteProblem : Deleted problem with ID: ${problemId}`
+      );
       return deletedProblem;
     } catch (error) {
       logger.error(
-        `Problem.Repository : Error while deleting problem with ID ${problemId}: ${error.message}`
+        `ProblemRepository.deleteProblem : Error while deleting problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
@@ -73,11 +81,13 @@ class ProblemRepository {
       if (!updatedProblem) {
         throw new NotFoundError("problem", problemId);
       }
-      logger.info(`Updated problem with ID: ${problemId}`);
+      logger.info(
+        `ProblemRepository.updateProblem : Updated problem with ID: ${problemId}`
+      );
       return updatedProblem;
     } catch (error) {
       logger.error(
-        `Problem.Repository : Error while updating problem with ID ${problemId}: ${error.message}`
+        `ProblemRepository.updateProblem : Error while updating problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
