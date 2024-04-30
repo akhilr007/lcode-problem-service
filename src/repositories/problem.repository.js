@@ -13,7 +13,9 @@ class ProblemRepository {
       logger.info(`Problem created successfully: ${problem._id}`);
       return problem;
     } catch (error) {
-      logger.error(`Error while creating problem: ${error.message}`);
+      logger.error(
+        `Problem.Repository : Error while creating problem: ${error.message}`
+      );
       throw error;
     }
   }
@@ -24,7 +26,9 @@ class ProblemRepository {
       logger.info(`Retrieved all problems: ${problems.length} found`);
       return problems;
     } catch (error) {
-      logger.error(`Error while retrieving all problems: ${error.message}`);
+      logger.error(
+        `Problem.Repository : Error while retrieving all problems: ${error.message}`
+      );
       throw error;
     }
   }
@@ -39,7 +43,7 @@ class ProblemRepository {
       return problem;
     } catch (error) {
       logger.error(
-        `Error while retrieving problem with ID ${problemId}: ${error.message}`
+        `Problem.Repository : Error while retrieving problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
@@ -55,7 +59,7 @@ class ProblemRepository {
       return deletedProblem;
     } catch (error) {
       logger.error(
-        `Error while deleting problem with ID ${problemId}: ${error.message}`
+        `Problem.Repository : Error while deleting problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
@@ -73,7 +77,7 @@ class ProblemRepository {
       return updatedProblem;
     } catch (error) {
       logger.error(
-        `Error while updating problem with ID ${problemId}: ${error.message}`
+        `Problem.Repository : Error while updating problem with ID ${problemId}: ${error.message}`
       );
       throw error;
     }
