@@ -1,3 +1,4 @@
+const logger = require("../config/logger.config");
 const NotFoundError = require("../errors/notFound.error");
 const { Problem } = require("../models/index");
 
@@ -9,8 +10,10 @@ class ProblemRepository {
         description: problemData.description,
         testCases: problemData.testCases ? problemData.testCases : [],
       });
+      logger.info(`Problem created successfully: ${problem._id}`);
       return problem;
     } catch (error) {
+      logger.error(`Error while creating problem: ${error.message}`);
       throw error;
     }
   }
@@ -18,8 +21,10 @@ class ProblemRepository {
   async getAllProblems() {
     try {
       const problems = await Problem.find({});
+      logger.info(`Retrieved all problems: ${problems.length} found`);
       return problems;
     } catch (error) {
+      logger.error(`Error while retrieving all problems: ${error.message}`);
       throw error;
     }
   }
@@ -28,10 +33,15 @@ class ProblemRepository {
     try {
       const problem = await Problem.findById(problemId);
       if (!problem) {
+        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
+      logger.info(`Retrieved problem with ID: ${problemId}`);
       return problem;
     } catch (error) {
+      logger.error(
+        `Error while retrieving problem with ID ${problemId}: ${error.message}`
+      );
       throw error;
     }
   }
@@ -40,10 +50,15 @@ class ProblemRepository {
     try {
       const deletedProblem = await Problem.findByIdAndDelete(problemId);
       if (!deletedProblem) {
+        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
+      logger.info(`Deleted problem with ID: ${problemId}`);
       return deletedProblem;
     } catch (error) {
+      logger.error(
+        `Error while deleting problem with ID ${problemId}: ${error.message}`
+      );
       throw error;
     }
   }
@@ -54,10 +69,15 @@ class ProblemRepository {
         new: true,
       });
       if (!updatedProblem) {
+        logger.warn(`Problem not found with ID: ${problemId}`);
         throw new NotFoundError("problem", problemId);
       }
+      logger.info(`Updated problem with ID: ${problemId}`);
       return updatedProblem;
     } catch (error) {
+      logger.error(
+        `Error while updating problem with ID ${problemId}: ${error.message}`
+      );
       throw error;
     }
   }

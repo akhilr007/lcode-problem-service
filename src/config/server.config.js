@@ -6,4 +6,5 @@ module.exports = {
   PORT: process.env.PORT || 3000,
   MONGODB_ATLAS_URL: process.env.MONGODB_ATLAS_URL,
   NODE_ENV: process.env.NODE_ENV || "development",
+  LOG_LEVEL: process.env.LOG_LEVEL || "info",
 };
